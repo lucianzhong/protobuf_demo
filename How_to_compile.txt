@@ -1,0 +1,15 @@
+
+protoc --proto_path=/home/zy/Desktop/protobuf --cpp_out=/home/zy/Desktop/protobuf/ /home/zy/Desktop/protobuf/addressbook.proto
+
+
+protoc --proto_path=IMPORT_PATH        --cpp_out=DST_DIR      path/to/file.proto
+引用文件夹（使用--proto_path  或者 -I），如果proto文件中需要引用其他文件，在这指定(需要绝对路径，也就是需要完整的路径)
+
+(protoc -I=$SRC_DIR --cpp_out=$DST_DIR $SRC_DIR/addressbook.proto)
+
+
+
+g++ addressbook.pb.cc write_pb.cpp -o write `pkg-config --cflags --libs protobuf`
+
+
+g++ addressbook.pb.cc read_pb.cpp -o read `pkg-config --cflags --libs protobuf`
